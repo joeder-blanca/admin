@@ -1,1 +1,54 @@
-/* You can add global styles to this file, and also import other style files */
+.bg-dark-light{
+  background-color: #21252963;
+}
+
+.bg-success-light{
+  background-color: #1987542f;
+}
+
+.bg-danger-light{
+  background-color: #dc354636;
+}
+
+.bg-warning-light{
+  background-color: #d2f70042;
+}
+
+.bg-info-light{
+  background-color: #0dcaf036;
+}
+
+.bg-tr{
+  background-color: #6265681c;
+}
+
+.card{
+  background-color: rgba(240, 248, 255, 0) !important;
+}
+
+.text-right{
+  text-align: right !important;
+}
+@media (max-width: 768px) {
+  .hidden-sm {
+    display: none !important;
+  }
+
+  .t-sml{
+    font-size: smaller;
+  }
+
+  .t-sm{
+    font-size: small;
+  }
+}
+
+@media (min-width: 768px) {
+  .h-lg{
+    height: 300px !important;
+  }
+}
+
+.body{
+  background-color: red;
+}
