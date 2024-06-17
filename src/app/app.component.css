@@ -13,6 +13,23 @@
   background-color: #212529;
 }
 
+/* ::ng-deep .ant-table table {
+  background-color: #212529 !important;
+  color: #fff;
+}
+
+::ng-deep .ant-table .ant-table-tbody .ant-table-row:hover {
+  background-color: #e66c21 !important;
+  color: #ffffff !important;
+}
+
+::ng-deep .ant-table-thead  :hover {
+  background-color: #212529;
+  color: #ffffff;
+} */
+
+
+
 .app-layout {
   height: 100vh;
 }

@@ -18,7 +18,7 @@
             <a class="text-light" routerLink="/receitas">Receitas</a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a class="text-light" routerLink="/receitas">Despesas</a>
+            <a class="text-light" routerLink="/despesas">Despesas</a>
           </li>
           <li nz-menu-item nzMatchRouter>
             <a class="text-light" routerLink="/contas">Pagar/Receber</a>
@@ -59,7 +59,7 @@
     </nz-header>
     <nz-content>
       <div class="inner-content bg-dark">
-        <app-home></app-home>
+        <router-outlet></router-outlet>
       </div>
     </nz-content>
   </nz-layout>

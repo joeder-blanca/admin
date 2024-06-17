@@ -1,0 +1,101 @@
+<div class="row">
+  <div class="col-12 hidden-sm"><span class="h2 text-light">Receitas</span><p class="text-muted"><small>Sistema Financeiro</small></p></div>
+  <div class="col-md-4 col-xl-12 col-6 mb-3 d-flex  justify-content-end" >
+    <div class="card shadow w-100 text-right">
+      <div class="card-body bg-dark-light">
+        <button class="btn btn-sm btn-primary"><i class="fa-solid fa-square-plus"></i> Nova Receita</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 hidden-sm"><hr class="text-muted"></div>
+  <div class="col-12">
+      <div class="row">
+        <span class="text-light">Filtrar Período</span>
+          <div class="col-md-4 col-xl-4 col-6 mb-3">
+            <div class="card shadow h-100">
+              <div class="card-body bg-dark-light">
+                <form [formGroup]="searchForm">
+                  <div class="row" style=" display: flex; align-items: end;">
+                    <div class="col-5 text-light">
+                      <div class="inner-box">
+                        <label>De:</label>
+                        <nz-date-picker formControlName="dataDe"
+                          (ngModelChange)="onChange($event)"
+                          [nzFormat]="'dd/MM/yyyy HH:mm:ss'"
+                          style="width: 100%;">
+                        </nz-date-picker>
+                      </div>
+                    </div>
+                    <div class="col-5 text-light">
+                      <div class="inner-box">
+                        <label>Até:</label>
+                        <nz-date-picker formControlName="dataAte"
+                          (ngModelChange)="onChange($event)"
+                          [nzFormat]="'dd/MM/yyyy HH:mm:ss'"
+                          style="width: 100%;">
+                        </nz-date-picker>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-xl-3 col-6 mb-3">
+            <div class="card shadow">
+              <div class="card-body bg-success-light">
+                <div class="row align-items-center">
+                  <div class="col">
+                    <p class="small text-muted mb-0">Total</p>
+                    <span class="h4 mb-0 text-light t-sm">99</span><br>
+                    <span class="text-light">99 %</span>
+                  </div>
+                  <div class="col-auto hidden-sm">
+                    <i class="fa-solid fa-sack-dollar fa-2xl text-success"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-xl-12 col-6 mb-3">
+            <div class="card shadow">
+              <div class="card-body bg-dark-light">
+                <div class="row align-items-center">
+                  <div class="col">
+                    <nz-table #filterTable [nzData]="listOfData" nzTableLayout="fixed" class="dark-table">
+                      <thead>
+                        <tr>
+                          <th
+                            *ngFor="let column of listOfColumns"
+                            [nzSortOrder]="column.sortOrder"
+                            [nzSortFn]="column.sortFn"
+                            [nzSortDirections]="column.sortDirections"
+                            [nzAlign]="'center'"
+                          >
+                            {{ column.name }}
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let data of filterTable.data">
+                          <td>{{ data.codigo }}</td>
+                          <td>{{ data.nome }}</td>
+                          <td>{{ data.data }}</td>
+                          <td>{{ data.conta }}</td>
+                          <td>{{ data.categoria }}</td>
+                          <td>{{ data.valor }}</td>
+                          <td><button class="btn btn-sm btn-danger"><i class="fa-solid fa-trash-can"></i></button></td>
+                        </tr>
+                      </tbody>
+                    </nz-table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+  <!-- <div class="col-12">
+      <div id="slide-content"></div>
+  </div> -->
+</div>
