@@ -18,6 +18,11 @@ export class LoginComponent {
 
   responseLogin: any;
 
+  constructor(
+    private fb: NonNullableFormBuilder,
+    private authService : AuthService
+  ) {}
+
 
   submitForm(): void {
     const userName = this.validateForm.get('userName')!.value;
@@ -72,8 +77,5 @@ export class LoginComponent {
   }
 
 
-  constructor(
-    private fb: NonNullableFormBuilder,
-    private authService : AuthService
-  ) {}
+
 }

@@ -3,6 +3,12 @@ import { getISOWeek } from 'date-fns';
 import { en_US, NzI18nService, zh_CN } from 'ng-zorro-antd/i18n';
 import { NzTableSortFn, NzTableSortOrder } from 'ng-zorro-antd/table';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import * as $ from 'jquery';
+import { adminApiProvider } from 'src/app/shared/services/admin.service';
+import { totaisModel } from 'src/app/shared/models/totais.model';
+import { financeirosModel } from 'src/app/shared/models/financeiros.model';
+import * as moment from 'moment';
+
 
 interface DataItem {
   codigo: number;
@@ -29,7 +35,16 @@ export class ReceitaComponent implements OnInit {
 
   date = null;
   isEnglish = false;
+  visible = false;
+  visibleMenu = false;
+  visibleNovoFinanceiro: boolean = true;
   searchForm!: FormGroup;
+  periodoFiltro: string = 'Mês: Junho'
+
+  vrReceitas: string = '';
+
+  listTotais:any = [];
+  listFinanceiros:any = [];
 
   listOfColumns: ColumnItem[] = [
     {
@@ -76,35 +91,96 @@ export class ReceitaComponent implements OnInit {
     }
   ];
 
-  listOfData: DataItem[] = [
-    {
-      codigo: 1,
-      nome: 'Joe Blanca',
-      data: '2024-01-01',
-      conta: 'Banco Inter',
-      categoria: 'Salário',
-      valor: 12345,
-    }
-  ];
 
   constructor(
     private i18n: NzI18nService,
-    private fb: FormBuilder
+    private _fb: FormBuilder,
+    public _adminApi : adminApiProvider
   ) {}
 
+
+
+  obterTotais(){
+    let totalReceitas = 0;
+
+    this._adminApi.getTotais()
+    .then(data => {
+      this.listTotais = data;
+      this.listTotais.forEach((entry: totaisModel) =>{
+        
+        if(entry.tipo == "1"){
+          totalReceitas += parseFloat(entry.total);
+        }        
+      });
+      this.vrReceitas = totalReceitas.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    })
+  }
+
+  obterFinanceiros() {
+
+    this._adminApi.getFinanceiros()
+      .then(data => {
+        this.listFinanceiros = data.map((item: any) => new financeirosModel().mapFromApi(item));
+                const filteredFinanceiros = this.listFinanceiros.filter((entry: financeirosModel) => entry.tipo == '1');
+        
+        this.listFinanceiros = filteredFinanceiros; 
+      })
+      .catch(error => {
+        console.error('Erro ao obter financeiros:', error);
+      });
+  }
+
+  formatDate(date: any): string {
+    return moment(date).format('DD/MM/YYYY');
+  }
+
+  formatMoeda(valor: any): string {
+    return  valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  }
+  
+
+  open(): void {
+    this.visible = true;
+  }
+
+  close(): void {
+    this.visible = false;
+  }
+
   ngOnInit(): void {
-    this.searchForm = this.fb.group({
+    this.searchForm = this._fb.group({
       dataDe: [null],
-      dataAte: [null]
+      dataAte: [null],
+      pessoa: [null],
+      conta: [null],
+      categoria: [null]
     });
+    this.obterTotais();
+    this.obterFinanceiros();
   }
 
   onChange(result: Date): void {
     console.log('onChange: ', result);
   }
 
-  changeLanguage(): void {
-    this.i18n.setLocale(this.isEnglish ? zh_CN : en_US);
-    this.isEnglish = !this.isEnglish;
+  abrirNovoFinanceiro(){
+    this.visibleMenu = false;
+    this.visibleNovoFinanceiro = true;
   }
+  
+  abrirMenu(){
+    this.visibleMenu = true;
+  }
+
+  handleOk(): void {
+    console.log('Button ok clicked!');
+    this.visibleMenu = false;
+  }
+
+  handleCancel(): void {
+    console.log('Button cancel clicked!');
+    this.visibleMenu = false;
+  }
+  
+
 }

@@ -25,7 +25,18 @@ export  class BaseService{
     protected UrlServiceV1: string = environment.apiUrlv1;
     protected UrlServiceLoginV1: string = environment.apiUrlLoginv1;
 
-    public UrlServiceTotais = `${this.UrlServiceV1}/totais/getTotaisPeriodo.php?idUser={idUser}&idEmpresa={idEmpresa}`;
+    //url metodo get
+    public urlGetTotais = `${this.UrlServiceV1}/totais/getTotaisPeriodo.php?idUser={idUser}&idEmpresa={idEmpresa}`;
+    public urlGetFinanceiros = `${this.UrlServiceV1}/Financeiro/getFinanceiro.php?idUser={idUser}&idEmpresa={idEmpresa}`;
+    public urlGetPessoas = `${this.UrlServiceV1}/listas/getListas.php?tabela=pessoa&idEmpresa={idEmpresa}`;
+    public urlGetContas = `${this.UrlServiceV1}/listas/getListas.php?tabela=conta&idEmpresa={idEmpresa}`;
+    public urlGetCategorias = `${this.UrlServiceV1}/listas/getListas.php?tabela=sf_categoria&idEmpresa={idEmpresa}`;
+    public urlGetMetodos = `${this.UrlServiceV1}/listas/getListas.php?tabela=sf_metodo&idEmpresa={idEmpresa}`;
+    public urlGetFpgto = `${this.UrlServiceV1}/listas/getListas.php?tabela=sf_f_pgto&idEmpresa={idEmpresa}`;
+
+    //url metodo post
+    public urlPostFinanceiros = `${this.UrlServiceV1}/financeiro/sf.php;`
+
 
     //Toda vez que chamar esse método, já irá retornar o header
     protected ObterHeaderJson(){

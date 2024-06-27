@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
-  apiUrlLoginv1: 'http://localhost/plataforma_bit/backend.php/model/',
-  apiUrlv1: 'http://localhost/plataforma_bit/backend.php/model',
+  apiUrlLoginv1: 'http://localhost:5129/',
+  apiUrlv1: 'http://localhost:5129/',
   defaultLanguage: 'pt-BR',
   supportedLanguages: [
     'pt-BR'

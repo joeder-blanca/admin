@@ -13,21 +13,26 @@
   background-color: #212529;
 }
 
-/* ::ng-deep .ant-table table {
+::ng-deep .ant-drawer-wrapper-body {
+  background-color: #212529 !important;
+}
+
+::ng-deep .ant-menu-item-selected{
+  background-color: #188fff21 !important;
+}
+
+::ng-deep .ant-modal {
   background-color: #212529 !important;
   color: #fff;
 }
 
-::ng-deep .ant-table .ant-table-tbody .ant-table-row:hover {
-  background-color: #e66c21 !important;
-  color: #ffffff !important;
+::ng-deep .ant-modal-header,
+::ng-deep .ant-modal-title,
+::ng-deep .ant-modal-body,
+::ng-deep .ant-modal-footer {
+  background-color: #212529 !important;
+  color: #fff;
 }
-
-::ng-deep .ant-table-thead  :hover {
-  background-color: #212529;
-  color: #ffffff;
-} */
-
 
 
 .app-layout {
@@ -153,7 +158,7 @@ nz-content {
 }
 
 .mr-10{
-  margin-right: 10px;
+  margin-right: 10px !important;
 }
 
 .mr-20{
@@ -171,3 +176,8 @@ nz-content {
 .mr-50{
   margin-right: 50px;
 }
+
+.mb-10{
+  margin-bottom: 10px;
+}
+

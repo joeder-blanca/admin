@@ -19,14 +19,12 @@ export class httpClient {
     } else {
       headers = headers.append(
         'Content-Type',
-        'application/json'
+        'application/x-www-form-urlencoded'
       );
     }
 
     headers.append('Accept', 'application/json');
     let language = 'BR';
-
-
 
     let token: any = 'Bearer ' + localStorage.getItem('bitADMIN.token');
 

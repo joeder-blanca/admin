@@ -30,6 +30,18 @@ import { BaseService } from './shared/services/base.service';
 import { ReceitaComponent } from './pages/financeiro/receita/receita.component';
 
 import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzDrawerModule } from 'ng-zorro-antd/drawer';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NovoFinanceiroComponent } from './pages/financeiro/components/novo-financeiro/novo-financeiro.component';
+import { NzStepsModule } from 'ng-zorro-antd/steps';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { NzSwitchModule } from 'ng-zorro-antd/switch';
+import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
+import { CadastroComponent } from './pages/cadastro/cadastro.component';
 
 
 registerLocaleData(pt);
@@ -39,7 +51,9 @@ registerLocaleData(pt);
     AppComponent,
     LoginComponent,
     HomeComponent,
-    ReceitaComponent
+    ReceitaComponent,
+    NovoFinanceiroComponent,
+    CadastroComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +71,17 @@ registerLocaleData(pt);
     NzDropDownModule,
     NzIconModule,
     NzDatePickerModule,
-    NzTableModule
+    NzTableModule,
+    NzSelectModule,
+    NzDrawerModule,
+    NzModalModule,
+    NzStepsModule,
+    NzTabsModule,
+    NzSwitchModule,
+    NzInputNumberModule,
+    NzCheckboxModule,
+    NzRadioModule,
+    NzSpinModule
   ],
   providers: [
     AuthService,
